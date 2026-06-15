@@ -38,4 +38,7 @@ markers = [
 ]
 
 [tool.setuptools.packages.find]
-include = ["thoth*"]
+include = ["thoth*", "templates*"]
+
+[tool.setuptools.package-data]
+templates = ["**/*"]

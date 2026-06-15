@@ -29,11 +29,11 @@ MANAGED_DIRECTORY_ROOTS = [".agent-os", ".claude", ".thoth", "scripts", "tests",
 LEGACY_REMOVE_PATHS = [LEGACY_CONFIG_FILE, ".agent-os/research-tasks", "tests/test_validate.py", "tests/test_check_consistency.py", "tests/test_sync_todo.py", "tests/test_verify_completion.py"]
 DISCOVERY_CODE_SUFFIXES = {".py", ".js", ".ts", ".tsx", ".vue", ".sh", ".rs", ".go", ".java", ".c", ".cc", ".cpp", ".h", ".hpp"}
 THOTH_CLAUDE_BASH_ALLOW_PATTERN = "Bash(*thoth-claude-command.sh*)"
-BACKUP_SKIP_DIRS = {"__pycache__", ".pytest_cache", "node_modules", "dist"}
+BACKUP_SKIP_NAMES = {"__pycache__", ".pytest_cache", "node_modules", "dist", "__init__.py"}
 
 
 def _backup_ignore(_directory: str, names: list[str]) -> set[str]:
-    return {name for name in names if name in BACKUP_SKIP_DIRS}
+    return {name for name in names if name in BACKUP_SKIP_NAMES}
 
 def _backup_existing_path(project_dir: Path, migration_dir: Path, relpath: str) -> None:
     source = project_dir / relpath
